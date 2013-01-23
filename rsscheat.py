@@ -22,3 +22,5 @@ for feed in feeds:
 		for entry in feed.entries:
 			output.write(entry.id + "\n")
 
+print 'test'
+
