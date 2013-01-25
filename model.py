@@ -19,6 +19,6 @@ class Feeds(BaseModel):
 class Entries(BaseModel):
 	id = IntegerField(primary_key = True)
 	feed = ForeignKeyField(Feeds,related_name='entries')
+	entryTitle = CharField()
 	url = CharField()
 
-	

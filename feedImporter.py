@@ -2,19 +2,21 @@ import feedparser
 import peewee
 from model import *
 
-feeds = peewee.SelectQuery(Feeds,Feeds.id,Feeds.url,Feeds.title)
+def updateFeedEntries(feed):
 
-for feed in feeds:
-	
-	ufeed = feedparser.parse(feed.url)
+    parsedFeed = feedparser.parse(feed.url)
+    
+    for entry in parsedFeed.entries:
+        newLink,newTitle = entry.link,entry.title
+        try:
+            newEntry = Entries.get(Entries.url == entry.link)
+        except Entries.DoesNotExist:
+            newEntry = Entries(entryTitle='test',url=newLink,feed=feed)
+            newEntry.save()
 
-	for entry in ufeed.entries:
-		print entry.title
-		try:
-			newEntry = Entries.get(Entries.url == entry.link)
-			print("Entries.already in DB")
-		except Entries.DoesNotExist:
-			Entries.create(url = entry.link,feed=Feeds.get(Feeds.url == ufeed.link))
-			print('Entries.created')
 
-		
+for feed in Feeds.select():
+    print(feed.title)
+
+    updateFeedEntries(feed)
+
