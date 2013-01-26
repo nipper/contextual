@@ -12,13 +12,13 @@ class Feeds(BaseModel):
 	url = CharField()
 	title = CharField()
 
-	class MetaL:
-		database = db
-
-
 class Entries(BaseModel):
 	id = IntegerField(primary_key = True)
 	feed = ForeignKeyField(Feeds,related_name='entries')
 	entryTitle = CharField()
 	url = CharField()
 
+class Test(object):
+
+    def test(self,x):
+        print x
