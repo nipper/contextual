@@ -22,7 +22,19 @@ class Entries(BaseModel):
 	entryTitle = CharField()
 	url = CharField()
 
-class Test(object):
 
-    def test(self,x):
-        print x
+class Users(BaseModel):
+    id = IntegerField(primary_key = True)
+    firstName = CharField()
+    lastName = CharField()
+    username = CharField()
+
+    def fullName(self):
+        return self.firstName + " " + self.lastName
+
+class ReadEntries(BaseModel):
+
+    id = IntegerField(primary_key = True)
+
+    user = ForeignKeyField(Users,related_name='entriesRead')
+    entry = ForeignKeyField(Entries,related_name="readBy")
