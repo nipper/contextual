@@ -11,12 +11,13 @@ def updateFeedEntries(feed):
         try:
             newEntry = Entries.get(Entries.url == entry.link)
         except Entries.DoesNotExist:
-            newEntry = Entries(entryTitle='test',url=newLink,feed=feed)
+            newEntry = Entries(entryTitle=newTitle,url=newLink,feed=feed)
             newEntry.save()
 
+def updateFeeds():
 
-for feed in Feeds.select():
-    print(feed.title)
+    for feed in Feeds.select():
+        print(feed.title)
 
-    updateFeedEntries(feed)
+        updateFeedEntries(feed)
 

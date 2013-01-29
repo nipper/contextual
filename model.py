@@ -1,6 +1,6 @@
 from peewee import *
 
-databasePath = 'context.db'
+databasePath = 'test.db'
 
 db = SqliteDatabase(databasePath)
 class BaseModel(Model):
@@ -27,7 +27,7 @@ class Users(BaseModel):
     id = IntegerField(primary_key = True)
     firstName = CharField()
     lastName = CharField()
-    username = CharField()
+    usernme = CharField()
 
     def fullName(self):
         return self.firstName + " " + self.lastName
