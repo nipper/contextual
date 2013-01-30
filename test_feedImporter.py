@@ -1,6 +1,6 @@
 import unittest
 from model import *
-import feedImporter
+import goblin
 
 
 class FeedTest(unittest.TestCase):
@@ -29,7 +29,7 @@ class FeedTest(unittest.TestCase):
     def testUpdateFeeds(self):
         
 
-        feedImporter.updateFeeds()
+        goblin.updateFeeds()
 
         self.assertEqual('http://nickpootbenefit.blogspot.com/2009/12/nickpootbenefitorg.html',Entries.get(Entries.id==1).url,'URL Test Works')
         self.assertEqual('NICKPOOTBENEFIT.ORG',Entries.get(Entries.id==1).entryTitle,'Title is working okay')
