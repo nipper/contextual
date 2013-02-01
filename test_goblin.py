@@ -1,6 +1,6 @@
 import unittest
 from model import *
-import goblin
+import goblin 
 
 
 class FeedTest(unittest.TestCase):
