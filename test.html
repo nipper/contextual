@@ -1,8 +1,0 @@
-{% extends "layout.html" %}
-{% block body %}
-  <ul class=feeds>
-    {% for feed in feeds %}
-    <li><h2>{{ feed.title }}</h2>{{ feed.url|safe }}
-    {% endfor %}
-  </ul>
-{% endblock %}
